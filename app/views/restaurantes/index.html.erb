@@ -1,0 +1,37 @@
+  <%= render :partial => "titulo" %>
+  
+<%=raw teste %>
+
+  
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Nome</th>
+    <th>Endereço</th>
+    <th>Especialidade</th>
+    
+<th>Nota Média</th>
+  </tr>
+  <% @restaurantes.each do |r| %>
+  <tr>
+    <td><%=r.id%></td>
+    <td><%=r.nome%></td>
+    <td><%=r.endereco%></td>
+    <td><%=r.especialidade%></td>
+<td><%= r.qualificacoes.average(:nota) %></td>
+    <td>  <%= link_to 'Show', { :action => 'show', :id => r} %></td>
+    <td>  <%= link_to 'Edit', { :action => 'edit', :id => r} %></td>
+    <td>  <%= link_to 'Destroy', { :action => 'destroy', :id => r} %></td>
+    </tr>
+  <% end %>
+  </table>
+
+  <%= will_paginate @restaurantes, :previous_label => "Anteriores", :next_label => "Próximos", :separator =>"   "%>
+   
+
+  <%= link_to 'Criar Novo Restaurante!', { :action => 'new'} %>
+  
+  <%= link_to 'comidas italianas', por_especialidade_url(:especialidade => "italiana")%>
+<% @items.each do |item| %>
+<%=   item.inner_text %>
+<% end%>

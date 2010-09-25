@@ -1,0 +1,25 @@
+
+<%= render :partial => "titulo" %>
+
+<% if @restaurante.errors.any? %>
+  <ul>
+  <% @restaurante.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+<% end %>
+
+
+<%= form_for :restaurante, :url => { :action => 'create' } do |f| %>
+
+    <p>Nome: <%= f.text_field :nome %></p>
+    <p>Endereço: <%= f.text_field :endereco %></p>
+    <p>Especialidade: <%= f.text_field :especialidade %></p>
+
+  <%= submit_tag 'Enviar' %>
+
+<% end %>
+
+  <hr />
+  <%= link_to 'Voltar', { :action => 'index'} %>
+
